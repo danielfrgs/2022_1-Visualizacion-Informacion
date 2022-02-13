@@ -125,4 +125,4 @@ for x in range(-325, 320, 80):
 ts.getscreen()
 #ts.done()
 # Guardar
-ts.getcanvas().postscript(file="Tareas/T2/t2_b.eps")
+ts.getcanvas().postscript(file="Tareas/T2/t2_b_1.eps")
