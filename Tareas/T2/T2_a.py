@@ -5,6 +5,8 @@
 
 import turtle as ts
 
+ts.setup(840,440)
+
 def draw_line(xFrom, yFrom, xTo, yTo, color, size = 1):
     # Definimos la variable global
     global mylapiz

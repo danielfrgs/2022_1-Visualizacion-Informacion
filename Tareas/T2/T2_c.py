@@ -2,6 +2,8 @@ import turtle as ts
 
 # Vammos a definnir el color del fonndo
 #ts.bgcolor("grey")
+# Tamaño del canva
+ts.setup(800,800)
 
 # Vamos a definir una función que dibuje cuadrados
 
@@ -66,5 +68,5 @@ for x in range(0, 401, 10):
 ts.getscreen()
 #ts.done()
 # Guardar
-ts.getcanvas().postscript(file="Tareas/T2/t2_b.eps")
+ts.getcanvas().postscript(file="Tareas/T2/t2_c.eps")
 

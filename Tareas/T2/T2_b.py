@@ -3,6 +3,9 @@
 
 import turtle as ts
 
+# Tamaño del canva
+ts.setup(840,440)
+
 # Vammos a definnir el color del fonndo
 #ts.bgcolor("grey")
 
@@ -122,7 +125,7 @@ for x in range(-325, 320, 80):
     for y in range(-125, 120, 80):
         draw_circle(x, y, 10, 'white')
 
-ts.getscreen()
+ts.end_fill()
 #ts.done()
 # Guardar
 ts.getcanvas().postscript(file="Tareas/T2/t2_b_1.eps")
