@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 750px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "red", "id": 0, "label": "Pa\u00eds", "shape": "dot", "size": 35}, {"color": "orange", "id": 1, "label": "United States", "shape": "dot", "size": 30}, {"color": "orange", "id": 2, "label": "Brazil", "shape": "dot", "size": 30}, {"color": "orange", "id": 3, "label": "United Kingdom", "shape": "dot", "size": 30}, {"color": "orange", "id": 4, "label": "Germany", "shape": "dot", "size": 30}, {"color": "orange", "id": 5, "label": "Italy", "shape": "dot", "size": 30}, {"color": "orange", "id": 6, "label": "France", "shape": "dot", "size": 30}, {"color": "orange", "id": 7, "label": "Japan", "shape": "dot", "size": 30}, {"color": "orange", "id": 8, "label": "Russia", "shape": "dot", "size": 30}, {"color": "orange", "id": 9, "label": "Mexico", "shape": "dot", "size": 30}, {"color": "orange", "id": 10, "label": "Canada", "shape": "dot", "size": 30}, {"color": "orange", "id": 11, "label": "Spain", "shape": "dot", "size": 30}, {"color": "orange", "id": 12, "label": "Chile", "shape": "dot", "size": 30}, {"color": "orange", "id": 13, "label": "Argentina", "shape": "dot", "size": 30}, {"color": "orange", "id": 14, "label": "Colombia", "shape": "dot", "size": 30}, {"color": "orange", "id": 15, "label": "Australia", "shape": "dot", "size": 30}, {"color": "orange", "id": 16, "label": "Peru", "shape": "dot", "size": 30}, {"color": "orange", "id": 17, "label": "Cuba", "shape": "dot", "size": 30}, {"color": "orange", "id": 18, "label": "El Salvador", "shape": "dot", "size": 30}, {"color": "orange", "id": 19, "label": "Venezuela", "shape": "dot", "size": 30}, {"color": "orange", "id": 20, "label": "Guatemala", "shape": "dot", "size": 30}, {"color": "green", "id": 21, "label": "Pfizer/BioNTech", "shape": "dot", "size": 25}, {"color": "green", "id": 22, "label": "CorV", "shape": "dot", "size": 25}, {"color": "green", "id": 23, "label": "Johnson\u0026Johnson", "shape": "dot", "size": 25}, {"color": "green", "id": 24, "label": "BBIBP", "shape": "dot", "size": 25}, {"color": "green", "id": 25, "label": "Sputnik V", "shape": "dot", "size": 25}, {"color": "green", "id": 26, "label": "Abdala", "shape": "dot", "size": 25}, {"color": "green", "id": 27, "label": "Soberana02", "shape": "dot", "size": 25}, {"color": "green", "id": 28, "label": "Oxford/AstraZeneca", "shape": "dot", "size": 25}, {"color": "green", "id": 29, "label": "EpiVacCorona", "shape": "dot", "size": 25}, {"color": "green", "id": 30, "label": "CanSino", "shape": "dot", "size": 25}, {"color": "green", "id": 31, "label": "Sinopharm/Beijing", "shape": "dot", "size": 25}, {"color": "green", "id": 32, "label": "Moderna", "shape": "dot", "size": 25}, {"color": "green", "id": 33, "label": "Sinovac", "shape": "dot", "size": 25}]);
+        edges = new vis.DataSet([{"from": 0, "to": 1}, {"from": 0, "to": 2}, {"from": 0, "to": 3}, {"from": 0, "to": 4}, {"from": 0, "to": 5}, {"from": 0, "to": 6}, {"from": 0, "to": 7}, {"from": 0, "to": 8}, {"from": 0, "to": 9}, {"from": 0, "to": 10}, {"from": 0, "to": 11}, {"from": 0, "to": 12}, {"from": 0, "to": 13}, {"from": 0, "to": 14}, {"from": 0, "to": 15}, {"from": 0, "to": 16}, {"from": 0, "to": 17}, {"from": 0, "to": 18}, {"from": 0, "to": 19}, {"from": 0, "to": 20}, {"from": 1, "to": 23}, {"from": 1, "to": 32}, {"from": 1, "to": 21}, {"from": 2, "to": 28}, {"from": 2, "to": 21}, {"from": 2, "to": 33}, {"from": 3, "to": 32}, {"from": 3, "to": 28}, {"from": 3, "to": 21}, {"from": 4, "to": 23}, {"from": 4, "to": 32}, {"from": 4, "to": 28}, {"from": 4, "to": 21}, {"from": 5, "to": 23}, {"from": 5, "to": 32}, {"from": 5, "to": 28}, {"from": 5, "to": 21}, {"from": 6, "to": 23}, {"from": 6, "to": 32}, {"from": 6, "to": 28}, {"from": 6, "to": 21}, {"from": 7, "to": 32}, {"from": 7, "to": 21}, {"from": 8, "to": 29}, {"from": 8, "to": 25}, {"from": 9, "to": 30}, {"from": 9, "to": 28}, {"from": 9, "to": 21}, {"from": 9, "to": 33}, {"from": 9, "to": 25}, {"from": 10, "to": 32}, {"from": 10, "to": 28}, {"from": 10, "to": 21}, {"from": 11, "to": 23}, {"from": 11, "to": 32}, {"from": 11, "to": 28}, {"from": 11, "to": 21}, {"from": 12, "to": 30}, {"from": 12, "to": 28}, {"from": 12, "to": 21}, {"from": 12, "to": 33}, {"from": 13, "to": 28}, {"from": 13, "to": 31}, {"from": 13, "to": 25}, {"from": 14, "to": 28}, {"from": 14, "to": 21}, {"from": 14, "to": 33}, {"from": 15, "to": 28}, {"from": 15, "to": 21}, {"from": 16, "to": 28}, {"from": 16, "to": 21}, {"from": 16, "to": 31}, {"from": 17, "to": 26}, {"from": 17, "to": 27}, {"from": 18, "to": 28}, {"from": 18, "to": 21}, {"from": 18, "to": 33}, {"from": 19, "to": 24}, {"from": 19, "to": 22}, {"from": 19, "to": 25}, {"from": 20, "to": 32}, {"from": 20, "to": 28}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
